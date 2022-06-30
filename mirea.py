@@ -1,12 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 
-university = 'Прикладная математика и информатика (ИИИ)'
+direction = 'Прикладная математика и информатика (ИИИ)'
 URL = 'https://priem.mirea.ru/accepted-entrants-list/'
 
 
 HEADERS = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                      'AppleWebKit/537.36 (KHTML, like Gecko) '
+                      'Chrome/103.0.0.0 Safari/537.36',
+        'Accept': '*/*'
     }
 
 
@@ -15,7 +18,9 @@ def get_html(url, params=None):
 
 
 def get_content(html):
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, 'lxml')
+    directions = soup.find('div', class_='rates', id='rates')
+    print(directions)
 
 
 def parse():
