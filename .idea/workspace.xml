@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="adding the parsing mirea">
-      <change beforePath="$PROJECT_DIR$/mirea.py" beforeDir="false" afterPath="$PROJECT_DIR$/mirea.py" afterDir="false" />
+    <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="beging_parsing_for_mpti">
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +44,7 @@
       <recent name="$PROJECT_DIR$/html" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mirea">
+  <component name="RunManager" selected="Python.test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="parsing_universities" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,9 +173,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.mirea" />
         <item itemvalue="Python.test2" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.mipt" />
         <item itemvalue="Python.mpti" />
       </list>
@@ -261,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656607580832</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="beging_parsing_for_mpti">
+      <created>1656608462468</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1656608462468</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

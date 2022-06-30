@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 direction = 'Прикладная математика и информатика (ИИИ)'
-URL = 'https://priem.mirea.ru/accepted-entrants-list/'
+URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
 
 HEADERS = {
@@ -21,40 +21,46 @@ def get_html(url, params=None):
     return requests.get(url, headers=HEADERS, params=params)
 
 
-def get_content(html):
-    soup = BeautifulSoup(html, 'lxml')
-    directions = soup.find('div', class_='rates', id='rates')
+def get_urls(name):
+    if name == 'ИИИ':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416774837808438'
+    if name == 'ИИТ':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416794849881398'
 
-    # res = get_html('url')
-    # soup = BeautifulSoup(res.content, 'html.parser')
-    # items_abitur = soup.find('table', class_='namesTable').find_all('tr')
-    # data_based = soup.find('p', class_='lastUpdate').get_text(strip=True)  # когда было обновление базы
-    # # all_points = soup.find('p', class_='text-align: center').get_text(strip=True)
-    # users = []
-    #
-    # for item in items_abitur:
-    #     users.append({
-    #         'num': pushing(item, 'num'),
-    #         'fio': pushing(item, 'fio'),
-    #         'accepted': pushing(item, 'accepted'),
-    #         'original': pushing(item, 'original'),
-    #         'campus': pushing(item, 'campus'),
-    #         'marks': pushing(item, 'marks'),
-    #         'achievments': pushing(item, 'achievments'),
-    #         'sum': pushing(item, 'sum')
-    #     })
-    # print(users)
+
+def get_content(html):
+    soup_main_page = BeautifulSoup(html, 'lxml')
+    directions = soup_main_page.find('div', class_='rates', id='rates')
+
+    res = get_html('https://priem.mirea.ru/accepted-entrants-list/'
+                   'personal_code_rating.php?competition'
+                   '=1712416774837808438')
+    soup = BeautifulSoup(res.content, 'html.parser')
+    items_abitur = soup.find('table', class_='namesTable').find_all('tr')
+    data_based = soup.find('p', class_='lastUpdate').get_text(strip=True)  # когда было обновление базы
+    # all_points = soup.find('p', class_='text-align: center').get_text(strip=True)
+    users = []
+
+    for item in items_abitur:
+        users.append({
+            'num': pushing(item, 'num'),
+            'fio': pushing(item, 'fio'),
+            'accepted': pushing(item, 'accepted'),
+            'original': pushing(item, 'original'),
+            'campus': pushing(item, 'campus'),
+            'marks': pushing(item, 'marks'),
+            'achievments': pushing(item, 'achievments'),
+            'sum': pushing(item, 'sum')
+        })
+    print(users)
 
 
 def parse():
-    html = get_html(URL)
+    html = get_html(URL_main_page)
     if html.status_code == 200:
         get_content(html.text)
     else:
         print('Error')
 
 
-# soup = BeautifulSoup(URL, 'lxml')
-# directions = soup.find('div', class_='rates').find('table', id='ratesTable')
-# print(directions)
 parse()
