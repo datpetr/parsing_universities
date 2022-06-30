@@ -2,8 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-def pushing(item, info): # getting data from the table
+
+def pushing(item, info):  # getting data from the table
     return item.find('td', class_=f'{info}').get_text(strip=True)
+
 
 def urls(name):
     if name == 'ИИИ':
@@ -19,7 +21,7 @@ def parse(url):
     res = requests.get(url, headers=HEADERS)
     soup = BeautifulSoup(res.content, 'html.parser')
     items_abitur = soup.find('table', class_='namesTable').find_all('tr')
-    data_based = soup.find('p', class_='lastUpdate').get_text(strip=True) # когда было обновление базы
+    data_based = soup.find('p', class_='lastUpdate').get_text(strip=True)  # когда было обновление базы
     # all_points = soup.find('p', class_='text-align: center').get_text(strip=True)
     users = []
 
