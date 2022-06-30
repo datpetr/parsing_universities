@@ -6,10 +6,20 @@ def pushing(item, info): # getting data from the table
     return item.find('td', class_=f'{info}').get_text(strip=True)
 
 def urls(name):
-    if name == 'ИИИ':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416774837808438'
-    if name == 'ИИТ':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416794849881398'
+    # ИИИ_1 - ПМИ, ИИИ_2 - ИВТ
+    # ИИТ_1 - ПМИ, ИИТ_2 - ИВТ
+    names = {
+        'ИИИ_1':'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416774837808438',
+        'ИИТ_1': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416794849881398',
+        'ИТУ': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416806591835446',
+        'ИКБ': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416814830497078',
+        'ИТХТ': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416824219446582',
+        'ИРИ': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714956668866964790',
+        'ИИИ_2': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417222681472310',
+        'ИИТ_2': 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416831985200438'
+    }
+
+
 
 
 def parse(url):
