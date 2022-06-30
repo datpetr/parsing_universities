@@ -1,1 +1,2 @@
-import mipt
+# import mipt
+import mirea

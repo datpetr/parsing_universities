@@ -15,9 +15,12 @@ def get_html(url, params=None):
     return requests.get(url, headers=HEADS, params=params)
 
 
+print(get_html(URL))
+
+
 def parse():
     html = get_html(URL)
-    print(html)
+    print(html.status_code)
 
 
 parse()

@@ -2,35 +2,31 @@ import requests
 from bs4 import BeautifulSoup
 
 university = 'Прикладная математика и информатика (ИИИ)'
-url = 'https://priem.mirea.ru/accepted-entrants-list/'
-heads = [
-    {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; rv:76.0) Gecko/20100101 Firefox/76.0',
-        'Accept': '*/*'
-    },
-    {
-        "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0",
-        'Accept': '*/*'
-    },
-    {
-        "User-Agent": "Mozilla/5.0 (X11; Debian; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0",
-        'Accept': '*/*'
-    },
-    {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 3.1; rv:76.0) Gecko/20100101 Firefox/69.0',
-        'Accept': '*/*'
-    },
-    {
-        "User-Agent": "Mozilla/5.0 (X11; Debian; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/76.0",
-        'Accept': '*/*'
-    },
-    {
-        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0",
-        'Accept': '*/*'
-    },
-]
+URL = 'https://priem.mirea.ru/accepted-entrants-list/'
 
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'lxml')
-directions = soup.find('div', class_='rates').find('table', id='ratesTable')
-print(directions)
+
+HEADERS = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
+    }
+
+
+def get_html(url, params=None):
+    return requests.get(url, headers=HEADERS, params=params)
+
+
+def get_content(html):
+    soup = BeautifulSoup(html, 'html.parser')
+
+
+def parse():
+    html = get_html(URL)
+    if html.status_code == 200:
+        get_content(html.text)
+    else:
+        print('Error')
+
+
+# soup = BeautifulSoup(URL, 'lxml')
+# directions = soup.find('div', class_='rates').find('table', id='ratesTable')
+# print(directions)
+parse()
