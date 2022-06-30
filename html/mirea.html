@@ -1,0 +1,472 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Списки подавших документы</title>
+
+	<link rel="stylesheet" href="styles.css?v23">
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<script language="javascript" src="jquery-1.11.3.min.js"></script>
+	<script language="javascript" src="jquery-ui.min.js"></script>
+	<script language="javascript" src="jquery.tmpl.min.js"></script>
+	<script language="javascript" src="enroll_public.js?v25"></script>
+</head>
+
+<body>
+	<p style="display: inline-block; ">←&nbsp;<a href="https://priem.mirea.ru">На сайт приёмной комиссии</a></p>
+	<p style="float: right; background-color: #1c73ff; padding: 6px; border-radius: 4px; "><a style="color: white;" href="https://priem.mirea.ru/lk" target="_blank">→&nbsp;В личный кабинет абитуриента</a></p>
+	<h1 style="width: 100%;"><br /><br />Списки подавших документы</h1>
+	<p class="disclaimer">Информация обновляется ежедневно. Итоговые конкурсные списки будут доступны в сроки, указанные в Порядке приёма. В случае обнаружения ошибки в ваших данных сообщите нам на <a href="mailto:pk@mirea.ru">pk@mirea.ru</a>. </p>
+	<p align="center"><a href="https://priem.mirea.ru/docs/2022/accepted_entrants/refusals.pdf" target="_blank">Лица, которым отказано в приёме документов</a></p>
+	<!-- <p align="center"><br><a href="https://priem.mirea.ru/accepted-entrants-list/campus.php" target="_blank">Списки лиц, заявивших о потребности в общежитии</a></p> -->
+
+	<div class="filter">
+		<div class="single_filter">
+		<label for="place">Место обучения:</label>
+		<select id="place">
+			<option value="moscow" >г. Москва</option>
+			<option value="stavr" >филиал в г. Ставрополе</option>
+			<option value="frya" >филиал в г. Фрязино</option>
+		</select>
+		</div>
+		<div class="single_filter">
+		<label for="eduForm">Форма обучения:</label>
+		<select id="eduForm">
+			<option value="och" >Очная (дневная)</option>
+			<option value="zaoch" >Заочная</option>
+			<option value="ochzaoch" >Очно-заочная (вечерняя)</option>
+		</select>
+		</div>
+		<div class="single_filter">
+		<label for="eduLevel">Уровень образования:</label>
+		<select id="eduLevel">
+			<option value="bach" >бакалавриат/специалитет</option>
+			<option value="mag" >магистратура</option>
+			<option value="spo" >СПО</option>
+			<option value="asp" >аспирантура</option>
+		</select>
+		</div>
+	</div>
+
+	<div class="agreementInfo" id="agreementInfo">
+		<p><strong>Рассматриваются к зачислению:</strong><br>
+			при поступлении на бюджет — лица, предоставившие оригинал документа об образовании и заявление о согласии на зачисление,<br>
+			при поступлении на платное — лица, предоставившие заявление о согласии на зачисление и оплатившие первый семестр обучения.&nbsp;</p>
+	</div>
+
+	<h2 id="levelTxt" style="margin: 0 auto; max-width: 800px;"></h2>
+
+	<div id="rates" class="rates"></div>
+
+	<p id="places_clarification" style="max-width: 800px; margin: 0 auto;"><strong>* Количество мест указано без учёта мест на целевое обучение в интересах безопасности государства.</strong><br>
+		В соответствии с требованиями пункта 96 Порядка приёма и 14.6 Правил приёма РТУ МИРЭА в списке лиц, подавших документы, и в списке поступающих на места в пределах целевой квоты не указываются сведения, относящиеся к приёму на целевое обучение в интересах безопасности государства.
+	</p>
+
+
+	<script id="tableHeaderTmpl" type="text/x-jquery-tmpl">
+		<table id="ratesTable">
+  <thead>
+    <tr>
+      	<td class="npsName">Направление подготовки/<br>специальность</td>
+      	<td class="plan">Мест <strong>*</strong></td>
+      	<td class="appCount">Заявлений подано<br><span style="font-size: .9em;">(без учёта выбывших)</span></td>
+	  	{{if level != "asp"}}
+		  <!-- <td class="appOrigCount">Подлинников</td> -->
+			{{if level != "spo"}}
+		  <td class="appCountAccepted">Рассматриваются к&nbsp;зачислению</td>
+			{{/if}}
+			{{/if}}
+		  {{if (level == "bach" || level == "spec" || level == "mag" || level == "spo")}}
+		  <td class="competitionMinScore">Текущие<br>проходные баллы</td>
+		  {{/if}}
+      		<td class="competitionListing">Список<br>подавших документы</td>
+		  {{if level == "bach" || level == "spec"}}
+		  <td class="competitionBadgeCol"></td>
+		  {{/if}}
+    </tr>
+  </thead>
+</script>
+
+
+
+	<!--
+
+# шапка
+{{if level == "bach" || level == "spec"}}
+	  <td class="competitionMinScore">Текущий прох. балл<br>по общему конкурсу</td>
+	  {{/if}}
+
+
+{{if level == "bach" || level == "spec"}}
+			<td class="competitionMinScore">{{if typeof(totalBudget.minScore) != "undefined" && totalBudget.minScore > 0}}<i title="Текущий проходной балл по общему конкурсу">${totalBudget.minScore}</i>{{/if}}</td>
+		{{/if}}
+
+
+{{if level == "bach" || level == "spec"}}
+			<td class="competitionMinScore"></td>
+		{{/if}}
+-->
+
+	<script id="ratesPhdTmpl" type="text/x-jquery-tmpl">
+		<tbody>
+	<tr class='npsTitle'>
+		<td class='compType'>
+		${title}
+		</td>
+		{{if totalBudget.plan != 0 || isCollege || typeof(crimea) != "undefined"}}
+			<td class='plan' title='Число мест'>{{if !isCollege}}${totalBudget.plan}{{else}}—{{/if}}</td>
+			<td class='appCount' title='Подано заявлений'>${totalBudget.appCount}</td>
+			{{if level == "bach" || level == "spec" || level == "mag"}}
+			<td class='competitionMinScore' title='Текущий проходной балл'>&nbsp;</td>
+			{{/if}}
+
+			<td class='competitionListing'></td>
+
+		{{else}}
+			<td class='onlyPaid' colspan='{{if level == "spo"}}6{{else level == "asp"}}3{{else level == "mag"}}6{{else}}6{{/if}}'>только платные места</td>
+		{{/if}}
+	</tr>
+	{{if common}}
+	<tr class='rowCommon'>
+		<td class='compType'>из них по общему конкурсу</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${common.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${common.appCount}</td>
+		<td class='competitionListing'>
+			{{if common.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${common.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if target}}
+	<tr class='rowTarget'>
+		<td class='compType'>из них квота приёма на целевое обучение</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${target.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${target.appCount}</td>
+		<td class='competitionListing'>
+			{{if target.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${target.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if totalPaid.plan}}
+	<tr>
+		<td class='compType'>платные места</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${totalPaid.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${totalPaid.appCount}</td>
+		<td class='competitionListing'>
+			{{if totalPaid.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${totalPaid.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	<tr>
+		<td colspan='{{if level == "spo"}}5{{else level == "asp"}}3{{else level == "mag"}}7{{else}}7{{/if}}'></td>
+	</tr>
+	</tbody>
+</script>
+
+	<script id="ratesSpoTmpl" type="text/x-jquery-tmpl">
+		<tbody>
+	<tr class='npsTitle'>
+		<td class='compType'>
+		${title}
+		</td>
+		{{if totalBudget.plan != 0 || isCollege || typeof(crimea) != "undefined"}}
+			<td class='plan' title='Число мест'>{{if !isCollege}}${totalBudget.plan}{{else}}—{{/if}}</td>
+			<td class='appCount' title='Подано заявлений'>${totalBudget.appCount}</td>
+			{{if level != "asp"}}
+			<!-- <td class='appOrigCount' title='Подано подлинников'>${totalBudget.appCountOriginal}</td> -->
+			{{if level != "spo"}}
+			<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${totalBudget.appCountAccepted}</td>
+			{{/if}}
+			{{/if}}
+			{{if level == "bach" || level == "spec" || level == "mag"}}
+			<td class='competitionMinScore' title='Текущий проходной балл'>&nbsp;</td>
+			{{/if}}
+
+			<td class='competitionListing'></td>
+		{{else}}
+			<td class='onlyPaid' colspan='6'>только платные места</td>
+		{{/if}}
+	</tr>
+	{{if common}}
+	<tr class='rowCommon'>
+		<td class='compType'>из них по общему конкурсу</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${common.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${common.appCount}</td>
+		<td class='competitionMinScore' title='Текущий проходной балл'>
+			{{if common.minScore_w1}}<em>${common.minScore_w1}</em>{{/if}}
+		</td>
+		<td class='competitionListing'>
+			{{if common.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${common.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if totalPaid.plan}}
+	<tr>
+		<td class='compType'>платные места</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${totalPaid.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${totalPaid.appCount}</td>
+		<td class='competitionMinScore' title='Текущий проходной балл'>
+			{{if paid.minScore_w1}}<em>${paid.minScore_w1}</em>{{/if}}
+		</td>
+		<td class='competitionListing'>
+			{{if totalPaid.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${totalPaid.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	<tr>
+		<td colspan='5'></td>
+	</tr>
+	</tbody>
+</script>
+
+	<script id="ratesMagTmpl" type="text/x-jquery-tmpl">
+		<tbody>
+	<tr class='npsTitle'>
+		<td class='compType'>${title}</td>
+		{{if totalBudget.plan != 0}}
+			<td class='plan' title='Число мест'>${totalBudget.plan}</td>
+			<td class='appCount' title='Подано заявлений'>${totalBudget.appCount}</td>
+			<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${totalBudget.appCountAccepted}</td>
+			<td class='competitionMinScore' title='Текущий проходной балл'>&nbsp;</td>
+			<td class='competitionListing'></td>
+		{{else}}
+			<td class='onlyPaid' colspan='6'>только платные места</td>
+		{{/if}}
+	</tr>
+	{{if common}}
+	<tr class='rowCommon'>
+		<td class='compType'>из них по общему конкурсу</td>
+		<td class='plan' title='Число мест'>${common.plan}</td>
+		<td class='appCount' title='Подано заявлений'>${common.appCount}</td>
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${common.appCountAccepted}</td>
+		<td class='competitionMinScore' title='Текущий проходной балл'>
+			{{if common.minScore_w1 > 0}}<em>${common.minScore_w1}</em>{{/if}}
+		</td>
+
+		<td class='competitionListing'>
+			{{if common.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${common.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if target}}
+	<tr class='rowTarget'>
+		<td class='compType'>из них квота приёма на целевое обучение</td>
+		<td class='plan' title='Число мест'>${target.plan}</td>
+		<td class='appCount' title='Подано заявлений'>${target.appCount}</td>
+		{{if level != "asp" }}
+		<!-- <td class='appOrigCount' title='Подано подлинников'>${target.appCountOriginal}</td> -->
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${target.appCountAccepted}</td>{{/if}}
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if target.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${target.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if totalPaid.plan}}
+	<tr>
+		<td class='compType'>платные места</td>
+		<td class='plan' title='Число мест'>${totalPaid.plan}</td>
+		<td class='appCount' title='Подано заявлений'>${totalPaid.appCount}</td>
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${totalPaid.appCountAccepted}</td>
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if totalPaid.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${totalPaid.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	<tr>
+		<td colspan='7'></td>
+	</tr>
+	</tbody>
+</script>
+
+	<script id="ratesBachTmpl" type="text/x-jquery-tmpl">
+		<tbody>
+	<tr class='npsTitle'>
+		<td class='compType'>${title}</td>
+		{{if totalBudget.plan != 0}}
+			<td class='plan' title='Число мест'>${totalBudget.plan}</td>
+			<td class='appCount' title='Подано заявлений'>${totalBudget.appCount}</td>
+			<!-- <td class='appOrigCount' title='Подано подлинников'>${totalBudget.appCountOriginal}</td> -->
+			<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'><!-- ${totalBudget.appCountAcceptedEntrantOriginal} --></td>
+			<td class='competitionMinScore' title='Текущий проходной балл'>&nbsp;</td>
+			<td class='competitionListing'>
+			</td>
+
+		{{else}}
+			<td class='onlyPaid' colspan='6'>только платные места</td>
+		{{/if}}
+	</tr>
+	{{if common}}
+	<tr class='rowCommon'>
+		<td class='compType'>из них по общему конкурсу</td>
+		<td class='plan' title='Число мест'>${common.plan}</td>
+		<td class='appCount' title='Подано заявлений'>${common.appCount}</td>
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${common.appCountAccepted}</td>
+		<td class='competitionMinScore' title='Текущий проходной балл'>
+			{{if common.minScore_w1 > 0}}${common.minScore_w1}{{/if}}
+		</td>
+
+		<td class='competitionListing'>
+		{{if common.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${common.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+		<td class="competitionBadges" rowspan="100">
+				{{if common}}
+					{{if (common.lastYearMinScore && common.lastYearMinScore > 0) }}<span class="lastYearMinScore">${common.lastYearMinScore}</span><br />проходной балл <br />прошлого года{{/if}}
+					{{if (common.lastYearMinScore && common.lastYearMinScore == 0) }}Новая программа{{/if}}
+					{{if (common.minScoreDynamics && common.minScoreDynamics == "up") }}
+					<p><img class="minScoreArrow" src="css/images/minScoreUp.png">рост <br />конкурса <br />по сравнению <br />с 2020 г.</p>
+					{{else (common.minScoreDynamics && common.minScoreDynamics == "down") }}
+					<p><img class="minScoreArrow" src="css/images/minScoreDown.png">падение <br />конкурса <br />по сравнению <br />с 2020 г.</p>
+					{{/if}}
+					{{if (typeof common.competitionClass !== "undefined" && common.competitionClass == "easyBudget") }}<span class="competitionBadge">Высокие шансы поступить!</span>{{/if}}
+				{{/if}}
+			</td>
+	</tr>
+	{{/if}}
+	{{if typeof(no_exams) != "undefined" && no_exams.appCount > 0}}
+	<tr class='rowNoExams'>
+		<td class='compType'>из них без вступительных испытаний</td>
+		<td class='plan' title='Число мест'></td>
+		<td class='appCount' title='Подано заявлений'>${no_exams.appCount}</td>
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${no_exams.appCountAccepted}</td>
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if no_exams.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${no_exams.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if quota}}
+	<tr class='rowQuota'>
+		<td class='compType'>из них квота для особых прав</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${quota.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${quota.appCount}</td>
+		<!-- <td class='appOrigCount' title='Подано подлинников'>${quota.appCountOriginal}</td> -->
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${quota.appCountAccepted}</td>
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if quota.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${quota.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if target}}
+	<tr class='rowTarget'>
+		<td class='compType'>из них квота приёма на целевое обучение</td>
+		<td class='plan' title='Число мест'>{{if !isCollege}}${target.plan}{{else}}—{{/if}}</td>
+		<td class='appCount' title='Подано заявлений'>${target.appCount}</td>
+		{{if level != "asp" }}
+		<!-- <td class='appOrigCount' title='Подано подлинников'>${target.appCountOriginal}</td> -->
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${target.appCountAccepted}</td>{{/if}}
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if target.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${target.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if special_quota}}
+	<tr class='rowSpecQuota'>
+		<td class='compType'>из них специальная квота</td>
+		<td class='plan' title='Число мест'>${special_quota.plan}</td>
+		<td class='appCount' title='Подано заявлений'>${special_quota.appCount}</td>
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${special_quota.appCountAccepted}</td>
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if special_quota.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${special_quota.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	{{if totalPaid.plan}}
+	<tr>
+		<td class='compType'>платные места</td>
+		<td class='plan' title='Число мест'>${totalPaid.plan}</td>
+		<td class='appCount' title='Подано заявлений'>${totalPaid.appCount}</td>
+		<td class='appCountAccepted' title='Рассматриваются к&nbsp;зачислению'>${totalPaid.appCountAccepted}</td>
+		<td class='minScores' title='Текущий проходной балл'>&nbsp;</td>
+
+		<td class='competitionListing'>
+			{{if totalPaid.appCount != 0}}
+			<a class='showListingBtn' href='personal_code_rating.php?competition=${totalPaid.listId}' target='_blank'>
+			Текущий конкурс</a>
+			{{/if}}
+		</td>
+	</tr>
+	{{/if}}
+	<tr>
+		<td colspan='6'></td>
+	</tr>
+	</tbody>
+</script>
+
+
+	<script id="searchTmpl" type="text/x-jquery-tmpl">
+		<div class="entrantFound">
+	<div class="entrantFoundData">
+		<p class="entrantFoundFio">${fullFio}</p>
+	</div>
+	<div class="entrantFoundData">
+		<!-- <p class="entrantFoundOriginal">Док-т: {{if originalIn == 1}}Подлинник{{else}}Копия{{/if}}</p> -->
+		<p class="entrantFoundSum">Баллы: ${marks}</p>
+	</div>
+	<div class="entrantFoundData">
+		<p class="entrantFoundStatus">${status}</p>
+	</div>
+	<p class="entrantFoundComp">{{if showRating == true}}Рейтинговый список: {{/if}}<a href="names_rating.php?competition=${id}&highlight=${entrantId}#${entrantId}" target="_blank">${title}</a></p>
+	<div class="clr"></div>
+</div>
+</script>
+
+
+
+<!-- Jivosite -->
+<script src="//code.jivosite.com/widget/WaO8vOYiUq" async></script>
+
+<!-- Yandex.Metrika counter --> <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(5217487, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/5217487" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+    <script type="text/javascript">!function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://vk.com/js/api/openapi.js?169",t.onload=function(){VK.Retargeting.Init("VK-RTRG-312576-5hrRZ"),VK.Retargeting.Hit()},document.head.appendChild(t)}();</script><noscript><img src="https://vk.com/rtrg?p=VK-RTRG-312576-5hrRZ" style="position:fixed; left:-999px;" alt=""/></noscript>
+</body>
+
+</html>
