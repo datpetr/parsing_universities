@@ -57,9 +57,9 @@ dict_of_directions = {
 }
 
 HEADERS = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0',
-        'Accept': '*/*'
-    }
+    'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0',
+    'Accept': '*/*'
+}
 
 
 def pushing(item, info):  # getting data from the table
@@ -205,7 +205,10 @@ def get_content(html, name_of_direction, snils):
 def parse():  # a function that checks the status of a page
     html = get_html(URL_main_page)
     if html.status_code == 200:
-        get_content(html.text, dict_of_directions[name_of_direction], snils)
+        try:
+            get_content(html.text, dict_of_directions[name_of_direction], snils)
+        except:
+            print('There is no such person on the list. Check the entered data.')
     else:
         print('Error')
 
