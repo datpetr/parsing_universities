@@ -195,8 +195,11 @@ def get_content(html, name_of_direction, snils):
         })
     for elem in users:
         if snils in elem['fio']:
-            print(elem)
+            for i in elem:
+                print(f'{i}: {elem[i]}')
             break
+    else:
+        print('There is no such person on the list. Check the entered data.')
 
 
 def parse():  # a function that checks the status of a page
