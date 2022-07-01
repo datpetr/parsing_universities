@@ -4,6 +4,20 @@ from bs4 import BeautifulSoup
 name_of_direction = input()
 URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
+dict_of_directions = {
+    '01.03.02 Прикладная математика и информатика (ИИИ)': 'ИИИ1',
+    '01.03.04 Прикладная математика (ИИТ)': 'ИИТ1',
+    '01.03.05 Статистика (ИТУ)': 'ИТУ1',
+    '02.03.02 Фундаментальная информатика и информационные технологии (ИКБ)': 'ИКБ1',
+    '04.03.01 Химия (ИТХТ)': 'ИТХТ1',
+    '05.03.03 Картография и геоинформатика (ИРИ)': 'ИРИ1',
+    '09.03.01 Информатика и вычислительная техника (ИИИ)': 'ИИИ2',
+    '09.03.01 Информатика и вычислительная техника (ИИТ)': 'ИИТ2',
+    '09.03.02 Информационные системы и технологии (ИКБ)': 'ИКБ2',
+    '09.03.02 Информационные системы и технологии (ИРИ)': 'ИРИ2',
+    '09.03.02 Информационные системы и технологии - Компьютерный дизайн (ИПТИП)': 'ИПТИП1',
+    '09.03.02 Информационные системы и технологии - Фулстек разработка (ИПТИП)': 'ИПТИП2',
+}
 
 HEADERS = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
@@ -33,7 +47,7 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416814830497078'
     elif name == 'ИТХТ1':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416824219446582'
-    elif name == 'ИРИ':
+    elif name == 'ИРИ1':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714956668866964790'
     elif name == 'ИИИ2':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417222681472310'
@@ -41,10 +55,12 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416831985200438'
     elif name == 'ИКБ2':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417235799158070'
-    elif name == 'ИРИ':
+    elif name == 'ИРИ2':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417616938708278'
     elif name == 'ИПТИП1':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417608956947766'
+    elif name == 'ИПТИП2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714956156281072950'
     elif name == 'ИИТ3':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417600979381558'
     elif name == 'ИИТ4':
@@ -61,25 +77,25 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417552558239030'
     elif name == 'ИКБ5':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417545906072886'
-    elif name == 'ИРИ1':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417535526219062'
-    elif name == 'ИРИ2':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417522705280310'
     elif name == 'ИРИ3':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417515145047350'
-    elif name == 'ИПТИП2':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417506900094262'
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417535526219062'
     elif name == 'ИРИ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417522705280310'
+    elif name == 'ИРИ5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417515145047350'
+    elif name == 'ИПТИП3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417506900094262'
+    elif name == 'ИРИ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417497502756150'
     elif name == 'ИКБ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417490279116086'
     elif name == 'ИИИ5':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417482846809398'
-    elif name == 'ИПТИП3':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417475758435638'
     elif name == 'ИПТИП4':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417468490755382'
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417475758435638'
     elif name == 'ИПТИП5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417468490755382'
+    elif name == 'ИПТИП6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417460785818934'
     elif name == 'ИИИ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417451560447286'
@@ -91,17 +107,17 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417423412473142'
     elif name == 'ИТХТ4':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417415126625590'
-    elif name == 'ИПТИП6':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417406008208694'
     elif name == 'ИПТИП7':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417406008208694'
+    elif name == 'ИПТИП8':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417396699999542'
     elif name == 'ИИИ8':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417388938439990'
     elif name == 'ИТУ2':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417380017155382'
-    elif name == 'ИПТИП8':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417372125572406'
     elif name == 'ИПТИП9':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417372125572406'
+    elif name == 'ИПТИП10':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417363256716598'
     elif name == 'ИТУ3':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417335499861302'
@@ -115,7 +131,7 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417286227275062'
     elif name == 'ИТУ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417275185769782'
-    elif name == 'ИПТИП10':
+    elif name == 'ИПТИП11':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417265428770102'
     return url
 
@@ -142,7 +158,7 @@ def get_content(html, name_of_direction):
             'achievments': pushing(item, 'achievments'),
             'sum': pushing(item, 'sum')
         })
-    print(users)
+    print(users[1:])
 
 
 def parse():  # a function that checks the status of a page
