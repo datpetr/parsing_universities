@@ -56,9 +56,7 @@ dict_of_directions = {
 }
 
 HEADERS = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
-                      'AppleWebKit/537.36 (KHTML, like Gecko) '
-                      'Chrome/103.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0',
         'Accept': '*/*'
     }
 
@@ -200,7 +198,7 @@ def get_content(html, name_of_direction):
 def parse():  # a function that checks the status of a page
     html = get_html(URL_main_page)
     if html.status_code == 200:
-        get_content(html.text, name_of_direction)
+        get_content(html.text, dict_of_directions[name_of_direction])
     else:
         print('Error')
 
