@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-direction = 'Прикладная математика и информатика (ИИИ)'
+name_of_direction = input()
 URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
 
@@ -13,31 +13,121 @@ HEADERS = {
     }
 
 
-def pushing(item, info): # getting data from the table
+def pushing(item, info):  # getting data from the table
     return item.find('td', class_=f'{info}').get_text(strip=True)
 
 
 def get_html(url, params=None):
-    return requests.get(url, headers=HEADERS, params=params)
+    return requests.get(url, headers=HEADERS, params=params)  # a function that returns the html code of the page
 
 
 def get_urls(name):
-    if name == 'ИИИ':
+    url = ''
+    if name == 'ИИИ1':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416774837808438'
-    if name == 'ИИТ':
+    elif name == 'ИИТ1':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416794849881398'
+    elif name == 'ИТУ1':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416806591835446'
+    elif name == 'ИКБ1':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416814830497078'
+    elif name == 'ИТХТ1':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416824219446582'
+    elif name == 'ИРИ':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714956668866964790'
+    elif name == 'ИИИ2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417222681472310'
+    elif name == 'ИИТ2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712416831985200438'
+    elif name == 'ИКБ2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417235799158070'
+    elif name == 'ИРИ':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417616938708278'
+    elif name == 'ИПТИП1':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417608956947766'
+    elif name == 'ИИТ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417600979381558'
+    elif name == 'ИИТ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417591424757046'
+    elif name == 'ИКБ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417582796025142'
+    elif name == 'ИИИ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417574615035190'
+    elif name == 'ИИИ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417567593770294'
+    elif name == 'ИКБ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417559840599350'
+    elif name == 'ИКБ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417552558239030'
+    elif name == 'ИКБ5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417545906072886'
+    elif name == 'ИРИ1':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417535526219062'
+    elif name == 'ИРИ2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417522705280310'
+    elif name == 'ИРИ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417515145047350'
+    elif name == 'ИПТИП2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417506900094262'
+    elif name == 'ИРИ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417497502756150'
+    elif name == 'ИКБ6':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417490279116086'
+    elif name == 'ИИИ5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417482846809398'
+    elif name == 'ИПТИП3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417475758435638'
+    elif name == 'ИПТИП4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417468490755382'
+    elif name == 'ИПТИП5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417460785818934'
+    elif name == 'ИИИ6':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417451560447286'
+    elif name == 'ИИИ7':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417442958978358'
+    elif name == 'ИТХТ2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417432656719158'
+    elif name == 'ИТХТ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417423412473142'
+    elif name == 'ИТХТ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417415126625590'
+    elif name == 'ИПТИП6':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417406008208694'
+    elif name == 'ИПТИП7':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417396699999542'
+    elif name == 'ИИИ8':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417388938439990'
+    elif name == 'ИТУ2':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417380017155382'
+    elif name == 'ИПТИП8':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417372125572406'
+    elif name == 'ИПТИП9':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417363256716598'
+    elif name == 'ИТУ3':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417335499861302'
+    elif name == 'ИТУ4':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714957070230400310'
+    elif name == 'ИКБ7':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417306852764982'
+    elif name == 'ИТУ5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417297168117046'
+    elif name == 'ИКБ8':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417286227275062'
+    elif name == 'ИТУ6':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417275185769782'
+    elif name == 'ИПТИП10':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417265428770102'
+    return url
 
 
-def get_content(html):
-    soup_main_page = BeautifulSoup(html, 'lxml')
-    directions = soup_main_page.find('div', class_='rates', id='rates')
+def get_content(html, name_of_direction):
+    # soup_main_page = BeautifulSoup(html, 'lxml')
+    # directions = soup_main_page.find('div', class_='rates', id='rates')
 
-    res = get_html('https://priem.mirea.ru/accepted-entrants-list/'
-                   'personal_code_rating.php?competition'
-                   '=1712416774837808438')
+    res = get_html(get_urls(name_of_direction))
     soup = BeautifulSoup(res.content, 'html.parser')
     items_abitur = soup.find('table', class_='namesTable').find_all('tr')
-    data_based = soup.find('p', class_='lastUpdate').get_text(strip=True)  # когда было обновление базы
+    data_based = soup.find('p', class_='lastUpdate').get_text(strip=True)  # when was the database update
     # all_points = soup.find('p', class_='text-align: center').get_text(strip=True)
     users = []
 
@@ -55,10 +145,10 @@ def get_content(html):
     print(users)
 
 
-def parse():
+def parse():  # a function that checks the status of a page
     html = get_html(URL_main_page)
     if html.status_code == 200:
-        get_content(html.text)
+        get_content(html.text, name_of_direction)
     else:
         print('Error')
 
