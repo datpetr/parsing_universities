@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 
 name_of_direction = input()
+snils = input()
 URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
 dict_of_directions = {
@@ -170,7 +171,7 @@ def get_urls(name):
     return url
 
 
-def get_content(html, name_of_direction):
+def get_content(html, name_of_direction, snils):
     # soup_main_page = BeautifulSoup(html, 'lxml')
     # directions = soup_main_page.find('div', class_='rates', id='rates')
 
@@ -192,13 +193,16 @@ def get_content(html, name_of_direction):
             'achievments': pushing(item, 'achievments'),
             'sum': pushing(item, 'sum')
         })
-    print(users[1:])
+    for elem in users:
+        if snils in elem['fio']:
+            print(elem)
+            break
 
 
 def parse():  # a function that checks the status of a page
     html = get_html(URL_main_page)
     if html.status_code == 200:
-        get_content(html.text, dict_of_directions[name_of_direction])
+        get_content(html.text, dict_of_directions[name_of_direction], snils)
     else:
         print('Error')
 
