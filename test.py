@@ -17,6 +17,33 @@ dict_of_directions = {
     '09.03.02 Информационные системы и технологии (ИРИ)': 'ИРИ2',
     '09.03.02 Информационные системы и технологии - Компьютерный дизайн (ИПТИП)': 'ИПТИП1',
     '09.03.02 Информационные системы и технологии - Фулстек разработка (ИПТИП)': 'ИПТИП2',
+    '09.03.03 Прикладная информатика (ИИТ)': 'ИИТ3',
+    '09.03.04 Программная инженерия (ИИТ)': 'ИИТ4',
+    '10.03.01 Информационная безопасность (ИКБ)': 'ИКБ3',
+    '10.05.01 Компьютерная безопасность (ИИИ)': 'ИИИ3',
+    '10.05.02 Информационная безопасность телекоммуникационных систем (ИИИ)': 'ИИИ4',
+    '10.05.03 Информационная безопасность автоматизированных систем (ИКБ)': 'ИКБ4',
+    '10.05.04 Информационно-аналитические системы безопасности (ИКБ)': 'ИКБ5',
+    '10.05.05 Безопасность информационных технологий в правоохранительной сфере (ИКБ)': 'ИКБ6',
+    '11.03.01 Радиотехника (ИРИ)': 'ИРИ3',
+    '11.03.02 Инфокоммуникационные технологии и системы связи (ИРИ)': 'ИРИ4',
+    '11.03.03 Конструирование и технология электронных средств (ИРИ)': 'ИРИ5',
+    '11.03.04 Электроника и наноэлектроника (ИПТИП)': 'ИПТИП3',
+    '11.05.01 Радиоэлектронные системы и комплексы (ИРИ)': 'ИРИ6',
+    '12.03.01 Приборостроение (ИКБ)': 'ИКБ7',
+    '12.03.04 Биотехнические системы и технологии (ИИИ)': 'ИИИ5',
+    '12.03.05 Лазерная техника и лазерные технологии (ИПТИП)': 'ИПТИП4',
+    '12.05.01 Электронные и оптико-электронные приборы и системы специального назначения (ИПТИП)': 'ИПТИП5',
+    '15.03.01 Машиностроение (ИПТИП)': 'ИПТИП6',
+    '15.03.04 Автоматизация технологических процессов и производств (ИИИ)': 'ИИИ6',
+    '15.03.06 Мехатроника и робототехника (ИИИ)': 'ИИИ7',
+    '18.03.01 Химическая технология (ИТХТ)': 'ИТХТ2',
+    '19.03.01 Биотехнология (ИТХТ)': 'ИТХТ3',
+    '20.03.01 Техносферная безопасность (ИТХТ)': 'ИТХТ4',
+    '22.03.01 Материаловедение и технологии материалов (ИПТИП)': 'ИПТИП7',
+    '27.03.01 Стандартизация и метрология (ИПТИП)': 'ИПТИП8',
+
+
 }
 
 HEADERS = {
@@ -71,11 +98,11 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417574615035190'
     elif name == 'ИИИ4':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417567593770294'
-    elif name == 'ИКБ3':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417559840599350'
     elif name == 'ИКБ4':
-        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417552558239030'
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417559840599350'
     elif name == 'ИКБ5':
+        url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417552558239030'
+    elif name == 'ИКБ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417545906072886'
     elif name == 'ИРИ3':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417535526219062'
@@ -87,7 +114,7 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417506900094262'
     elif name == 'ИРИ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417497502756150'
-    elif name == 'ИКБ6':
+    elif name == 'ИКБ7':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417490279116086'
     elif name == 'ИИИ5':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417482846809398'
@@ -123,11 +150,11 @@ def get_urls(name):
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417335499861302'
     elif name == 'ИТУ4':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1714957070230400310'
-    elif name == 'ИКБ7':
+    elif name == 'ИКБ8':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417306852764982'
     elif name == 'ИТУ5':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417297168117046'
-    elif name == 'ИКБ8':
+    elif name == 'ИКБ9':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417286227275062'
     elif name == 'ИТУ6':
         url = 'https://priem.mirea.ru/accepted-entrants-list/personal_code_rating.php?competition=1712417275185769782'
