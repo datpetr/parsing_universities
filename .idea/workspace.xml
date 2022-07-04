@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="_">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firefoxdrivers/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/firefoxdrivers/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firefoxdrivers/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/firefoxdrivers/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mirea.py" beforeDir="false" afterPath="$PROJECT_DIR$/mirea.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mtusi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mtusi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,8 +182,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.mtusi" />
-        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.mirea" />
         <item itemvalue="Python.test2" />
       </list>
@@ -348,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656932644153</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="_">
+      <created>1656942691596</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1656942691596</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
