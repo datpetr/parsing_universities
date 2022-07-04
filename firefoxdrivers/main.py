@@ -16,7 +16,6 @@ browser = webdriver.Firefox(executable_path='/home/master/PycharmProjects/'
 try:
     browser.get(url)
     browser.find_element(By.LINK_TEXT, 'Информатика и вычислительная техника').click()
-    time.sleep(10)
     soup = BeautifulSoup(browser.page_source, 'lxml')
     print(soup)
 except Exception as ex:
