@@ -20,3 +20,4 @@ except Exception as ex:
 finally:
     browser.close()
     browser.quit()
+
