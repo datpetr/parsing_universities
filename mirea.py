@@ -1,10 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-# name_of_direction = input()
-# snils = input()
 URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
+'''
 dict_of_directions = {
     '01.03.02 Прикладная математика и информатика (ИИИ)': 'ИИИ1',
     '01.03.04 Прикладная математика (ИИТ)': 'ИИТ1',
@@ -55,6 +54,7 @@ dict_of_directions = {
     '46.03.02 Документоведение и архивоведение (ИТУ)': 'ИТУ6',
     '54.03.01 Дизайн (ИПТИП)': 'ИПТИП11'
 }
+'''
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:103.0) Gecko/20100101 Firefox/103.0',
@@ -201,15 +201,7 @@ def get_content(html, name_of_direction, snils):
 
 def parse(snils, name_of_direction):  # a function that checks the status of a page
     html = get_html(URL_main_page)
-    if html.status_code == 200:
-        try:
-            get_content(html.text, dict_of_directions[name_of_direction], snils)
-        except:
-            print('There is no such person on the list. Check the entered data.')
-    else:
-        print('Error')
+    get_content(html.text, name_of_direction, snils)
 
 
-snils = '158-316-679-92'
-direction = '01.03.02 Прикладная математика и информатика (ИИИ)'
-parse(snils, direction)
+print(parse('158-316-679-92', 'ИИИ1'))

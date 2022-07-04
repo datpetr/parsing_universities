@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TBot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mirea.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/TBot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mirea.py" beforeDir="false" afterPath="$PROJECT_DIR$/mirea.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +45,12 @@
     &quot;last_opened_file_path&quot;: &quot;/home/master/PycharmProjects/parsing_universities&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.TBot">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sasha\PycharmProjects\parsing_universities" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.mirea">
     <configuration name="TBot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="parsing_universities" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -152,8 +158,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TBot" />
         <item itemvalue="Python.mirea" />
+        <item itemvalue="Python.TBot" />
         <item itemvalue="Python.mipt" />
         <item itemvalue="Python.mpti" />
       </list>
@@ -203,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656607264878</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="tg bot">
+      <created>1656706504537</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1656706504537</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -221,6 +234,7 @@
     <MESSAGE value="beging parsing for mpti" />
     <MESSAGE value="beging_parsing_for_mpti" />
     <MESSAGE value="мирэа почти готов" />
-    <option name="LAST_COMMIT_MESSAGE" value="мирэа почти готов" />
+    <MESSAGE value="tg bot" />
+    <option name="LAST_COMMIT_MESSAGE" value="tg bot" />
   </component>
 </project>
