@@ -4,10 +4,14 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import time
 
-url = 'https://lk.abitur.mtuci.ru/staticPage.php?page_name=spiski&ysclid=l56mnhda9t439607663'
-snils = '171-800-133 31'
 # useragent = UserAgent()
+url = 'https://lk.abitur.mtuci.ru/staticPage.php?page_name=spiski&ysclid=l56mnhda9t439607663'
+snils = '160-219-038 23'
+type_of_learning = 'Очное обучение'
+budget_or_not_budget = 'Бюджетная основа'
+name_of_direction = 'Инфокоммуникационные технологии и системы связи (СиСС)'
 options = webdriver.FirefoxOptions()
+
 browser = webdriver.Firefox(executable_path='/home/master/PycharmProjects/'
                                             'parsing_universities/firefoxdrivers/'
                                             'geckodriver')
@@ -51,10 +55,12 @@ def get_content(html, snils):
 def parse():
     try:
         browser.get(url)
-        browser.find_element(By.LINK_TEXT, 'Информатика и вычислительная техника').click()
+        # print(get_html())
+        time.sleep(15)
+        browser.find_element(By.LINK_TEXT, name_of_direction).click()
         get_content(get_html(), snils)
-    except:
-        print('Error')
+    except Exception as ex:
+        print(ex)
     finally:
         browser.close()
         browser.quit()
