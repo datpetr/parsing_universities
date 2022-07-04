@@ -16,11 +16,6 @@ browser = webdriver.Firefox(executable_path='/home/master/PycharmProjects/'
                                             'parsing_universities/firefoxdrivers/'
                                             'geckodriver')
 
-
-def pushing(item, info):  # getting data from the table
-    return item.find('td', class_=f'{info}').get_text(strip=True)
-
-
 def get_html():
     return BeautifulSoup(browser.page_source, 'lxml')
 
@@ -56,7 +51,6 @@ def parse():
     try:
         browser.get(url)
         # print(get_html())
-        time.sleep(15)
         browser.find_element(By.LINK_TEXT, name_of_direction).click()
         get_content(get_html(), snils)
     except Exception as ex:

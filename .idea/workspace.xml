@@ -52,7 +52,7 @@
       <recent name="$PROJECT_DIR$/html" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mtusi">
+  <component name="RunManager" selected="Python.test">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="parsing_universities" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,8 +181,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mtusi" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.mtusi" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.mirea" />
         <item itemvalue="Python.test2" />
@@ -352,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656942691596</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="_">
+      <created>1656946533592</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1656946533592</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
