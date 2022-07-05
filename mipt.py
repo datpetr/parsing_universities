@@ -64,12 +64,19 @@ dict_translate_for_output = {
     'education_document': 'Документ об оброзовании'
 }
 
-snils = '171-981-748 05'
-admission_condition = dict_admission_condition['Общий конкурс']
-direction = dict_direction['01.03.02 Прикладная математика и информатика']
-competitive_group = dict_competitive_group['ФПМИ Прикладная математика и информатика']
-basis_of_learning = dict_basis_of_learning["Бюджетное обучение"]
-order_of_admission = dict_order_of_admission["включая"]
+# snils = '171-981-748 05'
+# admission_condition = dict_admission_condition['Общий конкурс']
+# direction = dict_direction['01.03.02 Прикладная математика и информатика']
+# competitive_group = dict_competitive_group['ФПМИ Прикладная математика и информатика']
+# basis_of_learning = dict_basis_of_learning["Бюджетное обучение"]
+# order_of_admission = dict_order_of_admission["включая"]
+
+snils = input('Введите СНИЛС: ')
+admission_condition = dict_admission_condition[input('Условия поступления: ')]
+direction = dict_direction[input('Направление: ')]
+competitive_group = dict_competitive_group[input('Конкурсная группа: ')]
+basis_of_learning = dict_basis_of_learning[input('Основа обучения: ')]
+order_of_admission = dict_order_of_admission[input('Включенные в приказ о зачислении: ')]
 
 
 def get_html():
