@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="_">
-      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mipt.py" beforeDir="false" afterPath="$PROJECT_DIR$/mipt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mtusi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mtusi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -407,7 +406,28 @@
       <option name="project" value="LOCAL" />
       <updated>1657037663548</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="_">
+      <created>1657037895449</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1657037895450</updated>
+    </task>
+    <task id="LOCAL-00032" summary="_">
+      <created>1657037929166</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1657037929166</updated>
+    </task>
+    <task id="LOCAL-00033" summary="_">
+      <created>1657038949356</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1657038949356</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

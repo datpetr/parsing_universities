@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
-from selenium.webdriver.support.ui import Select
 import time
 
 url = 'https://pk.mipt.ru/bachelor/competition-list/'

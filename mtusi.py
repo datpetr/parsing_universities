@@ -4,12 +4,29 @@ from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 import time
 
+
+dict_translate_for_output = {
+    'num': '№',
+    'reception_category': 'Категория приёма',
+    'snils': 'СНИЛС',
+    'individual_achievements': 'Индивидуальные достижения',
+    'sum_of_points': 'Cумма баллов',
+    'type_of_vi': 'Тип ВИ',
+    'original': 'Оригинал',
+    'consent_to_enrollment': 'Cогласие на зачисление',
+    'the_need_for_a_hostel': 'Нуждаемость в общежитии'
+}
+
 # useragent = UserAgent()
 url = 'https://lk.abitur.mtuci.ru/staticPage.php?page_name=spiski&ysclid=l56mnhda9t439607663'
-snils = '183-443-824 81'
-type_of_learning = 'Заочное обучение'
-budget_or_not_budget = 'Бюджетная основа'
-name_of_direction = 'Информационные системы и технологии'
+# snils = '183-443-824 81'
+# type_of_learning = 'Заочное обучение'
+# budget_or_not_budget = 'Бюджетная основа'
+# name_of_direction = 'Информационные системы и технологии'
+snils = input('Введите СНИЛС: ')
+type_of_learning = input('Вид обучения: ')
+budget_or_not_budget = input('Бюджетная основа или платное обучение')
+name_of_direction = input('Наименование направления:')
 options = webdriver.FirefoxOptions()
 options.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) "
                                                      "Gecko/20100101 Firefox/103.0")
@@ -44,9 +61,9 @@ def get_content(html, snils):
         })
 
     for elem in applicants:
-        if snils == elem['snils']:
+        if snils in elem['snils']:
             for i in elem:
-                print(f'{i}: {elem[i]}')
+                print(f'{dict_translate_for_output[i]}: {elem[i]}')
             break
     else:
         print('There is no such person on the list. Check the entered data.')
