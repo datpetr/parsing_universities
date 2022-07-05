@@ -1,16 +1,16 @@
-# from fake_useragent import UserAgent
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import Select
 import time
 
-# useragent = UserAgent()
 url = 'https://pk.mipt.ru/bachelor/competition-list/'
-snils = '183-443-824 81'
-type_of_learning = 'Заочное обучение'
-budget_or_not_budget = 'Бюджетная основа'
-name_of_direction = 'Общий конкрус'
+snils = '171-981-748 05 '
+admission_condition = 'Общий конкурс'
+direction = '01.03.02 Прикладная математика и информатика'
+competitive_group = 'ФПМИ Прикладная математика и информатика'
+basis_of_learning = "Бюджетное обучение"
+order_of_admission = "включая"
 options = webdriver.FirefoxOptions()
 options.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) "
                                                      "Gecko/20100101 Firefox/103.0")
@@ -106,13 +106,14 @@ def parse():
                               value='//option[@value="1"]')[1].click()  # направления
 
         browser.find_element(by=By.XPATH,
-                             value='//option[@value="423"]').click()
+                             value='//option[@value="423"]').click()  # конкурсная группа
         # browser.find_element(by=By.XPATH,
         #                      value='//input[@id="competition_list_agreement"]').click()
-        browser.find_element(by=By.XPATH,
-                             value='//option[@value="include"]').click()  # конкурсная группа
         browser.find_elements(by=By.XPATH,
-                             value='//option[@value="1"]')[2].click()
+                              value='//option[@value="1"]')[2].click()  # основа обучения
+        browser.find_element(by=By.XPATH,
+                             value='//option[@value="include"]').click()  # включение приказа о зачислении
+
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
         time.sleep(10)
