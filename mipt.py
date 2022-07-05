@@ -56,8 +56,15 @@ dict_order_of_admission = {
     "только": "only"
 }
 
+dict_translate_for_output = {
+    'num': '№',
+    'priority': 'Приоритет',
+    'snils': 'СНИЛС',
+    'sum_of_points_with_id': 'Cумма баллов с ид',
+    'education_document': 'Документ об оброзовании'
+}
 
-snils = '171-981-748 05 '
+snils = '171-981-748 05'
 admission_condition = dict_admission_condition['Общий конкурс']
 direction = dict_direction['01.03.02 Прикладная математика и информатика']
 competitive_group = dict_competitive_group['ФПМИ Прикладная математика и информатика']
@@ -71,27 +78,25 @@ def get_html():
 
 def get_content(html, snils):
     applicants = []
-    items_applicants = html.find('tbody').find_all('tr')
+    items_applicants = html.find('tbody', 'entrant-list-body').find_all('tr')
+
     for item in items_applicants:
         a = []
         for elem in item.find_all('td'):
             a.append(elem.get_text(strip=True))
+        
         applicants.append({
             'num': a[0],
-            'reception_category': a[1],
+            'priority': a[1],
             'snils': a[2],
-            'individual_achievements': a[7],
-            'sum_of_points': a[8],
-            'type_of_vi': a[9],
-            'original': a[10],
-            'consent_to_enrollment': a[11],
-            'the_need_for_a_hostel': a[12]
+            'sum_of_points_with_id': a[8],
+            'education_document': a[11],
         })
 
     for elem in applicants:
         if snils == elem['snils']:
             for i in elem:
-                print(f'{i}: {elem[i]}')
+                print(f'{dict_translate_for_output[i]}: {elem[i]}')
             break
     else:
         print('There is no such person on the list. Check the entered data.')
@@ -153,8 +158,8 @@ def parse():
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
-        time.sleep(10)
-        # get_content(get_html(), snils)
+        time.sleep(1)
+        get_content(get_html(), snils)
 
     except Exception as ex:
         print(ex)
