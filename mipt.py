@@ -5,12 +5,6 @@ from selenium.webdriver.support.ui import Select
 import time
 
 url = 'https://pk.mipt.ru/bachelor/competition-list/'
-snils = '171-981-748 05 '
-admission_condition = 'Общий конкурс'
-direction = '01.03.02 Прикладная математика и информатика'
-competitive_group = 'ФПМИ Прикладная математика и информатика'
-basis_of_learning = "Бюджетное обучение"
-order_of_admission = "включая"
 options = webdriver.FirefoxOptions()
 options.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) "
                                                      "Gecko/20100101 Firefox/103.0")
@@ -63,6 +57,14 @@ dict_order_of_admission = {
 }
 
 
+snils = '171-981-748 05 '
+admission_condition = dict_admission_condition['Общий конкурс']
+direction = dict_direction['01.03.02 Прикладная математика и информатика']
+competitive_group = dict_competitive_group['ФПМИ Прикладная математика и информатика']
+basis_of_learning = dict_basis_of_learning["Бюджетное обучение"]
+order_of_admission = dict_order_of_admission["включая"]
+
+
 def get_html():
     return BeautifulSoup(browser.page_source, 'lxml')
 
@@ -99,20 +101,55 @@ def parse():
     try:
         browser.get(url)
         # find_element(By.CLASS_NAME, 'btn btn-block btn-primary').click()
+        if admission_condition == 1:  # условия поступления
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="1"]')[0].click()
+        elif admission_condition == 2:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="2"]')[0].click()
+        elif admission_condition == 3:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="3"]')[0].click()
+        elif admission_condition == 4:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="4"]')[0].click()
+        elif admission_condition == 5:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="5"]')[0].click()
+        else:
+            browser.find_elements(by=By.XPATH,
+                                  value=f'//option[@value="{str(admission_condition)}"]')[0].click()
 
-        browser.find_elements(by=By.XPATH,
-                              value='//option[@value="1"]')[0].click()  # условия поступления
-        browser.find_elements(by=By.XPATH,
-                              value='//option[@value="1"]')[1].click()  # направления
+        if direction == 1:  # направления
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="1"]')[1].click()
+        elif direction == 2:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="2"]')[1].click()
+        elif direction == 4:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="4"]')[1].click()
+        elif direction == 5:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="5"]')[1].click()
+        else:
+            browser.find_elements(by=By.XPATH,
+                                  value=f'//option[@value="{str(direction)}"]')[1].click()
 
         browser.find_element(by=By.XPATH,
-                             value='//option[@value="423"]').click()  # конкурсная группа
+                             value=f'//option[@value="{competitive_group}"]').click()  # конкурсная группа
         # browser.find_element(by=By.XPATH,
         #                      value='//input[@id="competition_list_agreement"]').click()
-        browser.find_elements(by=By.XPATH,
-                              value='//option[@value="1"]')[2].click()  # основа обучения
+
+        if basis_of_learning == 1:  # основа обучения
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="1"]')[2].click()
+        elif basis_of_learning == 2:
+            browser.find_elements(by=By.XPATH,
+                                  value='//option[@value="2"]')[2].click()
+
         browser.find_element(by=By.XPATH,
-                             value='//option[@value="include"]').click()  # включение приказа о зачислении
+                             value=f'//option[@value="{order_of_admission}"]').click()  # включение приказа о зачислении
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
