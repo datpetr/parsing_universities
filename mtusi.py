@@ -11,10 +11,13 @@ type_of_learning = 'Заочное обучение'
 budget_or_not_budget = 'Бюджетная основа'
 name_of_direction = 'Информационные системы и технологии'
 options = webdriver.FirefoxOptions()
-
+options.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) "
+                                                     "Gecko/20100101 Firefox/103.0")
 browser = webdriver.Firefox(executable_path='/home/master/PycharmProjects/'
                                             'parsing_universities/firefoxdrivers/'
-                                            'geckodriver')
+                                            'geckodriver',
+                            options=options
+)
 
 
 def get_html():

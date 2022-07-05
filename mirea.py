@@ -213,4 +213,5 @@ def parse():  # a function that checks the status of a page
         print('Error')
 
 
-parse()
+if __name__ == '__main__':
+    parse()
