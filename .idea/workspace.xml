@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/geckodriver.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/TBot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mipt.py" beforeDir="false" afterPath="$PROJECT_DIR$/mipt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mirea.py" beforeDir="false" afterPath="$PROJECT_DIR$/mirea.py" afterDir="false" />
     </list>
@@ -53,7 +54,7 @@
       <recent name="C:\Users\Sasha\PycharmProjects\parsing_universities" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mipt">
+  <component name="RunManager" selected="Python.TBot">
     <configuration name="TBot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="parsing_universities" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,9 +162,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.TBot" />
         <item itemvalue="Python.mipt" />
         <item itemvalue="Python.mirea" />
-        <item itemvalue="Python.TBot" />
         <item itemvalue="Python.mpti" />
       </list>
     </recent_temporary>
@@ -226,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1656941142815</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1">
+      <created>1657352075224</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1657352075224</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,6 +266,7 @@
     <MESSAGE value="мирэа почти готов" />
     <MESSAGE value="tg bot" />
     <MESSAGE value="not all done yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="not all done yet" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
 </project>

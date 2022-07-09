@@ -4,12 +4,7 @@ from selenium.webdriver.firefox.service import Service
 from bs4 import BeautifulSoup
 import time
 
-url = 'https://pk.mipt.ru/bachelor/competition-list/'
-options = webdriver.FirefoxOptions()
-options.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) "
-                                                     "Gecko/20100101 Firefox/103.0")
-browser = webdriver.Firefox(service=Service('C:/Users/Sasha/PycharmProjects/parsing_universities/geckodriver.exe'),
-                            options=options)
+
 
 dict_admission_condition = {
     'Общий конкурс': 1,
@@ -61,22 +56,24 @@ dict_translate_for_output = {
     'education_document': 'Документ об оброзовании'
 }
 
-snils = '171-981-748 05'
-admission_condition = dict_admission_condition['Общий конкурс']
-direction = dict_direction['01.03.02 Прикладная математика и информатика']
-competitive_group = dict_competitive_group['ФПМИ Прикладная математика и информатика']
-basis_of_learning = dict_basis_of_learning["Бюджетное обучение"]
-order_of_admission = dict_order_of_admission["включая"]
-
-# snils = input('Введите СНИЛС: ')
-# admission_condition = dict_admission_condition[input('Условия поступления: ')]
-# direction = dict_direction[input('Направление: ')]
-# competitive_group = dict_competitive_group[input('Конкурсная группа: ')]
-# basis_of_learning = dict_basis_of_learning[input('Основа обучения: ')]
-# order_of_admission = dict_order_of_admission[input('Включенные в приказ о зачислении: ')]
-
+def main(snils, admission_condition, direction, competitive_group, basis_of_learning):
+    global browser, url
+    url = 'https://pk.mipt.ru/bachelor/competition-list/'
+    options = webdriver.FirefoxOptions()
+    options.set_preference("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:103.0) "
+                                                         "Gecko/20100101 Firefox/103.0")
+    browser = webdriver.Firefox(service=Service('C:/Users/Sasha/PycharmProjects/parsing_universities/geckodriver.exe'),
+                                options=options)
+    snils = snils
+    admission_condition = dict_admission_condition[admission_condition]
+    direction = dict_direction[direction]
+    competitive_group = dict_competitive_group[competitive_group]
+    basis_of_learning = dict_basis_of_learning[basis_of_learning]
+    # order_of_admission = dict_order_of_admission["включая"]
+    return parse(snils, admission_condition, direction, competitive_group, basis_of_learning)
 
 def get_html():
+    global browser
     return BeautifulSoup(browser.page_source, 'lxml')
 
 
@@ -99,14 +96,13 @@ def get_content(html, snils):
 
     for elem in applicants:
         if snils == elem['snils']:
-            for i in elem:
-                print(f'{dict_translate_for_output[i]}: {elem[i]}')
-            break
+            return elem
     else:
         print('There is no such person on the list. Check the entered data.')
 
 
-def parse():
+def parse(snils, admission_condition, direction, competitive_group, basis_of_learning):
+    global browser, url
     try:
         browser.get(url)
         # find_element(By.CLASS_NAME, 'btn btn-block btn-primary').click()
@@ -157,20 +153,16 @@ def parse():
             browser.find_elements(by=By.XPATH,
                                   value='//option[@value="2"]')[2].click()
 
-        browser.find_element(by=By.XPATH,
-                             value=f'//option[@value="{order_of_admission}"]').click()  # включение приказа о зачислении
+        # browser.find_element(by=By.XPATH,
+        #                      value=f'//option[@value="{order_of_admission}"]').click()  # включение приказа о зачислении
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
         time.sleep(1)
-        get_content(get_html(), snils)
+        return get_content(get_html(), snils)
 
     except Exception as ex:
         print(ex)
     finally:
         browser.close()
         browser.quit()
-
-
-if __name__ == '__main__':
-    parse()
