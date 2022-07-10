@@ -2540,3 +2540,152 @@ JavaScript warning: https://mc.yandex.ru/metrika/watch.js, line 14: WEBGL_debug_
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.jsm
 Missing chrome or resource URL: resource://gre/modules/UpdateListener.sys.mjs
 console.error: "Error during quit-application-granted: [Exception... \"File error: Not found\"  nsresult: \"0x80520012 (NS_ERROR_FILE_NOT_FOUND)\"  location: \"JS frame :: resource:///modules/BrowserGlue.jsm :: _onQuitApplicationGranted/tasks< :: line 1996\"  data: no]"
+1657102553221	geckodriver	INFO	Listening on 127.0.0.1:59445
+1657102820544	geckodriver	INFO	Listening on 127.0.0.1:42355
+1657293276097	geckodriver	INFO	Listening on 127.0.0.1:54851
+1657293291436	geckodriver	INFO	Listening on 127.0.0.1:49949
+1657293341307	geckodriver	INFO	Listening on 127.0.0.1:34297
+1657293403513	geckodriver	INFO	Listening on 127.0.0.1:46321
+1657293478118	geckodriver	INFO	Listening on 127.0.0.1:50907
+1657293790220	geckodriver	INFO	Listening on 127.0.0.1:43891
+1657293927401	geckodriver	INFO	Listening on 127.0.0.1:33423
+1657294087502	geckodriver	INFO	Listening on 127.0.0.1:37829
+1657294257588	geckodriver	INFO	Listening on 127.0.0.1:57335
+1657294294784	geckodriver	INFO	Listening on 127.0.0.1:40293
+1657294375078	geckodriver	INFO	Listening on 127.0.0.1:51609
+1657294420883	geckodriver	INFO	Listening on 127.0.0.1:56655
+1657294584444	geckodriver	INFO	Listening on 127.0.0.1:42799
+1657294592946	geckodriver	INFO	Listening on 127.0.0.1:48443
+1657294676019	geckodriver	INFO	Listening on 127.0.0.1:44319
+1657294710394	geckodriver	INFO	Listening on 127.0.0.1:48869
+1657294718328	geckodriver	INFO	Listening on 127.0.0.1:52033
+1657294729679	geckodriver	INFO	Listening on 127.0.0.1:50753
+1657294801936	geckodriver	INFO	Listening on 127.0.0.1:34153
+1657294838378	geckodriver	INFO	Listening on 127.0.0.1:49183
+1657294854962	geckodriver	INFO	Listening on 127.0.0.1:47829
+1657297486086	geckodriver	INFO	Listening on 127.0.0.1:49659
+1657297494603	geckodriver	INFO	Listening on 127.0.0.1:49187
+1657297649923	geckodriver	INFO	Listening on 127.0.0.1:51999
+1657445359320	geckodriver	INFO	Listening on 127.0.0.1:43745
+1657446155831	geckodriver	INFO	Listening on 127.0.0.1:35199
+1657446169113	geckodriver	INFO	Listening on 127.0.0.1:53583
+1657446233520	geckodriver	INFO	Listening on 127.0.0.1:56291
+1657446245198	geckodriver	INFO	Listening on 127.0.0.1:53323
+1657446274152	geckodriver	INFO	Listening on 127.0.0.1:59497
+1657447020374	geckodriver	INFO	Listening on 127.0.0.1:43875
+1657447384735	geckodriver	INFO	Listening on 127.0.0.1:40537
+1657447392326	geckodriver	INFO	Listening on 127.0.0.1:49105
+1657447434878	geckodriver	INFO	Listening on 127.0.0.1:59015
+1657447821338	geckodriver	INFO	Listening on 127.0.0.1:36867
+1657448004860	geckodriver	INFO	Listening on 127.0.0.1:52957
+1657448033156	geckodriver	INFO	Listening on 127.0.0.1:59853
+1657448215147	geckodriver	INFO	Listening on 127.0.0.1:55251
+1657448226459	geckodriver	INFO	Listening on 127.0.0.1:50111
+1657448237810	geckodriver	INFO	Listening on 127.0.0.1:39331
+1657448247268	geckodriver	INFO	Listening on 127.0.0.1:39849
+Invalid port. Exiting...
+1657449511642	geckodriver	INFO	Listening on 127.0.0.1:53485
+1657449524554	geckodriver	INFO	Listening on 127.0.0.1:56797
+1657449538603	geckodriver	INFO	Listening on 127.0.0.1:49645
+1657450364057	geckodriver	INFO	Listening on 127.0.0.1:56007
+1657450542180	geckodriver	INFO	Listening on 127.0.0.1:44481
+1657450546511	geckodriver	INFO	Listening on 127.0.0.1:59873
+1657450563417	geckodriver	INFO	Listening on 127.0.0.1:35467
+1657456074453	geckodriver	INFO	Listening on 127.0.0.1:51051
+1657456105994	geckodriver	INFO	Listening on 127.0.0.1:42767
+1657456343920	geckodriver	INFO	Listening on 127.0.0.1:36163
+1657456565354	geckodriver	INFO	Listening on 127.0.0.1:48205
+1657456565361	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--remote-debugging-port" "47399" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofiledGTG3A"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657456680073	geckodriver	INFO	Listening on 127.0.0.1:39497
+1657456680077	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "-headless" "--remote-debugging-port" "53155" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileUjyTAr"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657456858329	geckodriver	INFO	Listening on 127.0.0.1:55143
+1657456858334	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--headless" "--remote-debugging-port" "59413" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilemauNwz"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657457445928	geckodriver	INFO	Listening on 127.0.0.1:33251
+1657457445933	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--headless" "--no-sandbox" "--remote-debugging-port" "59553" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileYZvE7x"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657457487837	geckodriver	INFO	Listening on 127.0.0.1:36401
+1657457487842	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--headless" "--disable-dev-shm-usage" "--remote-debugging-port" "42847" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileq2AtDB"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657457715000	geckodriver	INFO	Listening on 127.0.0.1:58707
+1657457715005	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--headless" "--disable-dev-shm-usage" "--remote-debugging-port" "59537" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileEyjcbr"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657457721626	geckodriver	INFO	Listening on 127.0.0.1:58471
+1657457721631	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--headless" "--disable-dev-shm-usage" "--remote-debugging-port" "41819" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilefVjU6F"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657458923143	geckodriver	INFO	Listening on 127.0.0.1:51729
+1657458923652	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--remote-debugging-port" "38287" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileytFz8T"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657459520947	geckodriver	INFO	Listening on 127.0.0.1:40317
+1657459520952	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--remote-debugging-port" "51773" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileRZHiJp"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657459996898	geckodriver	INFO	Listening on 127.0.0.1:59037
+1657459996903	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--headless" "--remote-debugging-port" "34353" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilevXtzrT"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460054605	geckodriver	INFO	Listening on 127.0.0.1:41163
+1657460054611	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--remote-debugging-port" "42033" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilenxrEcW"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460126443	geckodriver	INFO	Listening on 127.0.0.1:36297
+1657460126448	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--headless" "--disable-dev-shm-usage" "--remote-debugging-port" "34495" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilepI3uDB"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460144643	geckodriver	INFO	Listening on 127.0.0.1:53457
+1657460144648	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--remote-debugging-port" "43291" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilet4iKc0"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460162898	geckodriver	INFO	Listening on 127.0.0.1:48837
+1657460162903	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--remote-debugging-port" "53613" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileeDX0XO"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460179862	geckodriver	INFO	Listening on 127.0.0.1:45969
+1657460179867	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--remote-debugging-port" "41341" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilemos4Xj"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460208363	geckodriver	INFO	Listening on 127.0.0.1:43183
+1657460208368	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--remote-debugging-port" "39839" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofilev9MbHj"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460219238	geckodriver	INFO	Listening on 127.0.0.1:55215
+1657460219244	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "--headless" "--remote-debugging-port" "55819" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileyjAMtc"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460762666	geckodriver	INFO	Listening on 127.0.0.1:49119
+1657460762670	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--remote-debugging-port" "39751" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileXIm0Xo"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.
+1657460773207	geckodriver	INFO	Listening on 127.0.0.1:47441
+1657460773213	mozrunner::runner	INFO	Running command: "/home/master/Downloads/firefox/firefox" "--marionette" "-headless" "--remote-debugging-port" "41593" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileACSDdx"
+XPCOMGlueLoad error for file /home/master/Downloads/firefox/libxul.so:
+libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+Couldn't load XPCOM.

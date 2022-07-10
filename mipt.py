@@ -90,7 +90,7 @@ def get_content(html, snils):
         a = []
         for elem in item.find_all('td'):
             a.append(elem.get_text(strip=True))
-        
+
         applicants.append({
             'num': a[0],
             'priority': a[1],
