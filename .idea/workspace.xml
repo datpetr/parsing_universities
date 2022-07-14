@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="_">
+      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mipt.py" beforeDir="false" afterPath="$PROJECT_DIR$/mipt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mipt_laptop.py" beforeDir="false" afterPath="$PROJECT_DIR$/mipt_laptop.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
       <recent name="$PROJECT_DIR$/html" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mipt_laptop">
+  <component name="RunManager" selected="Python.mipt">
     <configuration name="main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="parsing_universities" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -190,9 +190,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mipt" />
         <item itemvalue="Python.mipt_laptop" />
         <item itemvalue="Python.test (1)" />
-        <item itemvalue="Python.mipt" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.mtusi" />
       </list>
