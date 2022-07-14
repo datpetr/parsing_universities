@@ -176,8 +176,6 @@ def get_content(html, snils):
     #         'education_document': pushing(item, 'education'),
     #     })
 
-
-    print(applicants)
     for elem in applicants:
         if snils == elem['snils']:
             for i in elem:
@@ -209,9 +207,9 @@ def parse():
         # else:
         #     browser.find_elements(by=By.XPATH,
         #                           value=f'//option[@value="{str(admission_condition)}"]')[0].click()
-
-        browser.find_elements(by=By.XPATH,
-                              value=f'//option[@value="{admission_condition}"]')[0].click()
+        if admission_condition != '':
+            browser.find_elements(by=By.XPATH,
+                                  value=f'//option[@value="{admission_condition}"]')[0].click()
 
         if direction in '12345':
             browser.find_elements(by=By.XPATH,
