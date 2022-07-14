@@ -142,11 +142,13 @@ def get_html():
 
 
 def pushing(item, info):  # getting data from the table
-    # if info == 'sum':
-    #     return item.find_elements('td', class_=f'{info}')[1].get_text(strip=True)
-    # else:
-    #     return item.find('td', class_=f'{info}').get_text(strip=True)
-    return item.find('td', class_=f'{info}').get_text(strip=True)
+    if info != '':
+        if info == 'sum':
+            return item.find_elements('td', class_=f'{info}')[1].get_text(strip=True)
+        else:
+            print('ну')
+            return item.find('td', class_=f'{info}').get_text(strip=True) if item.find('td', class_=f'{info}') != 'NoneType' else 'Копия отсутствует'
+    # return item.find('td', class_=f'{info}').get_text(strip=True)
 
 
 def get_content(html, snils):
@@ -167,7 +169,6 @@ def get_content(html, snils):
         })
 
     # for item in items_applicants:
-    #
     #     applicants.append({
     #         'num': pushing(item, '№'),
     #         'priority': pushing(item, 'Приоритет заявления'),
@@ -233,8 +234,8 @@ def parse():
         #     browser.find_elements(by=By.XPATH,
         #                           value=f'//option[@value="{str(direction)}"]')[1].click()
 
-        browser.find_element(by=By.XPATH,
-                             value=f'//option[@value="{competitive_group}"]').click()  # конкурсная группа
+        browser.find_element(by=By.XPATH,  # конкурсная группа
+                             value=f'//option[@value="{competitive_group}"]').click()
         # browser.find_element(by=By.XPATH,
         #                      value='//input[@id="competition_list_agreement"]').click()
 
@@ -245,11 +246,12 @@ def parse():
         #     browser.find_elements(by=By.XPATH,
         #                           value='//option[@value="2"]')[2].click()
 
-        browser.find_elements(by=By.XPATH,
-                              value='//option[@value="2"]')[2].click()
+        browser.find_elements(by=By.XPATH,  # основа обучения
+                              value=f'//option[@value="{basis_of_learning}"]')[2].click()
 
-        browser.find_element(by=By.XPATH,
-                             value=f'//option[@value="{order_of_admission}"]').click()  # включение приказа о зачислении
+        if order_of_admission != '':  # включение приказа о зачислении
+            browser.find_element(by=By.XPATH,
+                                 value=f'//option[@value="{order_of_admission}"]').click()
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
