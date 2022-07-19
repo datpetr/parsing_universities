@@ -119,15 +119,16 @@ dict_translate_for_output = {
     'priority': 'Приоритет',
     'snils': 'СНИЛС',
     'sum_of_points_with_id': 'Cумма баллов с ид',
-    'education_document': 'Документ об оброзовании'
+    'education_document': 'Документ об оброзовании',
+    'individual_achievements': 'Индивидуальные достижения'
 }
 
-snils = '176-727-614 09'
-admission_condition = str(dict_admission_condition['Общий конкурс'])
+snils = '185-208-972 94'
+admission_condition = 'Без критериев'
 direction = str(dict_direction['10.05.01 Компьютерная безопасность'])
 competitive_group = str(dict_competitive_group['Компьютерная безопасность'])
 basis_of_learning = str(dict_basis_of_learning["Бюджетное обучение"])
-order_of_admission = str(dict_order_of_admission["включая"])
+order_of_admission = ''
 
 # snils = input('Введите СНИЛС: ')
 # admission_condition = str(dict_admission_condition[input('Условия поступления: ')])
@@ -158,14 +159,22 @@ def get_content(html, snils):
         a = []
         for elem in item.find_all('td'):
             a.append(elem.get_text(strip=True))
-
-        applicants.append({
-            'num': a[0],
-            'priority': a[1],
-            'snils': a[2],
-            'sum_of_points_with_id': a[8],
-            'education_document': (a[11] if a[11] != '' else 'Копия отсутствует'),
-        })
+        if 'РСОШ' in a[4]:
+            applicants.append({
+                'num': a[0],
+                'priority': a[1],
+                'snils': a[2],
+                'individual_achievements': a[4],
+                'education_document': (a[5] if a[5] != '' else 'Копия отсутствует'),
+            })
+        else:
+            applicants.append({
+                'num': a[0],
+                'priority': a[1],
+                'snils': a[2],
+                'sum_of_points_with_id': a[8],
+                'education_document': (a[11] if a[11] != '' else 'Копия отсутствует'),
+            })
 
     # for item in items_applicants:
     #     applicants.append({
@@ -207,7 +216,7 @@ def parse():
         # else:
         #     browser.find_elements(by=By.XPATH,
         #                           value=f'//option[@value="{str(admission_condition)}"]')[0].click()
-        if admission_condition != '':
+        if admission_condition != 'Без критериев':
             browser.find_elements(by=By.XPATH,
                                   value=f'//option[@value="{admission_condition}"]')[0].click()
 
@@ -254,7 +263,7 @@ def parse():
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
-        time.sleep(1)
+        time.sleep(5)
         get_content(get_html(), snils)
 
     except Exception as ex:
