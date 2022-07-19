@@ -146,7 +146,6 @@ def pushing(item, info):  # getting data from the table
         if info == 'sum':
             return item.find_elements('td', class_=f'{info}')[1].get_text(strip=True)
         else:
-            print('ну')
             return item.find('td', class_=f'{info}').get_text(strip=True) if item.find('td', class_=f'{info}') != 'NoneType' else 'Копия отсутствует'
     # return item.find('td', class_=f'{info}').get_text(strip=True)
 
