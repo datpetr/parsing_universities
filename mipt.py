@@ -189,11 +189,11 @@ def get_content(html, snils):
 def parse():
     try:
         browser.get(url)
-        if admission_condition != 'Без критериев':
+        if admission_condition != 'Без критериев':  # условия поступления
             browser.find_elements(by=By.XPATH,
                                   value=f'//option[@value="{admission_condition}"]')[0].click()
 
-        if direction in '12345':
+        if direction in '12345':  # направление
             browser.find_elements(by=By.XPATH,
                                   value=f'//option[@value="{direction}"]')[1].click()
         elif direction in '6729':
@@ -212,7 +212,7 @@ def parse():
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
-        time.sleep(5)
+        time.sleep(1)
         get_content(get_html(), snils)
 
     except Exception as ex:
