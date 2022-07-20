@@ -164,7 +164,8 @@ def get_content(html, snils):
                 'num': a[0],
                 'priority': a[1],
                 'snils': a[2],
-                'individual_achievements': a[4],
+                'individual_achievements': a[4].replace('                                                            ',
+                                                        ' '),
                 'education_document': (a[5] if a[5] != '' else 'Копия отсутствует'),
             })
         else:
@@ -175,7 +176,6 @@ def get_content(html, snils):
                 'sum_of_points_with_id': a[8],
                 'education_document': (a[11] if a[11] != '' else 'Копия отсутствует'),
             })
-
     # for item in items_applicants:
     #     applicants.append({
     #         'num': pushing(item, '№'),
@@ -263,7 +263,7 @@ def parse():
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
-        time.sleep(5)
+        time.sleep(1)
         get_content(get_html(), snils)
 
     except Exception as ex:

@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-name_of_direction = input()
-snils = input()
+name_of_direction = 'ИИИ1'
+snils = '169-644-902-19'
 URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
 dict_of_directions = {
@@ -174,7 +174,6 @@ def get_urls(name):
 def get_content(html, name_of_direction, snils):
     # soup_main_page = BeautifulSoup(html, 'lxml')
     # directions = soup_main_page.find('div', class_='rates', id='rates')
-
     res = get_html(get_urls(name_of_direction))
     soup = BeautifulSoup(res.content, 'html.parser')
     items_abitur = soup.find('table', class_='namesTable').find_all('tr')
@@ -193,6 +192,7 @@ def get_content(html, name_of_direction, snils):
             'achievments': pushing(item, 'achievments'),
             'sum': pushing(item, 'sum')
         })
+    print(items_abitur)
     for elem in users:
         if snils in elem['fio']:
             for i in elem:
@@ -207,7 +207,7 @@ def parse():  # a function that checks the status of a page
     if html.status_code == 200:
         try:
             get_content(html.text, dict_of_directions[name_of_direction], snils)
-        except:
+        except Exception as ex:
             print('There is no such person on the list. Check the entered data.')
     else:
         print('Error')
