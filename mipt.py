@@ -33,17 +33,6 @@ dict_direction = {
     '11.03.04 Электроника и наноэлектроника': 29
 }
 
-# dict_competitive_group = {
-#     'ФПМИ Прикладная математика и информатика': 423,
-#     "ФПМИ Экономика и ERP": 424,
-#     "ФПМИ Прикладная математика и информатика Иностранные граждане": 425,
-#     "Computer science for foreign citizens": 426,
-#     'Computer science': 427,
-#     "В рамках квоты правительства РФ (направление ПМИ)": 458,
-#     "ФПМИ Прикладная математика и информатика (Предприятия Минпромторга)": 699,
-#     'ФПМИ Прикладная математика и информатика (ПАО "ГАЗПРОМ НЕФТЬ")': 700
-# }
-
 dict_competitive_group = {
     'ФПМИ Прикладная математика и информатика': 423,
     "ФПМИ Экономика и ERP": 424,
@@ -123,19 +112,19 @@ dict_translate_for_output = {
     'individual_achievements': 'Индивидуальные достижения'
 }
 
-snils = '185-208-972 94'
-admission_condition = 'Без критериев'
-direction = str(dict_direction['10.05.01 Компьютерная безопасность'])
-competitive_group = str(dict_competitive_group['Компьютерная безопасность'])
-basis_of_learning = str(dict_basis_of_learning["Бюджетное обучение"])
-order_of_admission = ''
+# snils = '167-392-322 91'
+# admission_condition = 'Без критериев'
+# direction = str(dict_direction['10.05.01 Компьютерная безопасность'])
+# competitive_group = str(dict_competitive_group['Компьютерная безопасность'])
+# basis_of_learning = str(dict_basis_of_learning["Бюджетное обучение"])
+# order_of_admission = ''
 
-# snils = input('Введите СНИЛС: ')
-# admission_condition = str(dict_admission_condition[input('Условия поступления: ')])
-# direction = str(dict_direction[input('Направление: ')])
-# competitive_group = str(dict_competitive_group[input('Конкурсная группа: ')])
-# basis_of_learning = str(dict_basis_of_learning[input('Основа обучения: ')])
-# order_of_admission = str(dict_order_of_admission[input('Включенные в приказ о зачислении: ')])
+snils = input('Введите СНИЛС: ')
+admission_condition = str(dict_admission_condition[input('Условия поступления: ')])
+direction = str(dict_direction[input('Направление: ')])
+competitive_group = str(dict_competitive_group[input('Конкурсная группа: ')])
+basis_of_learning = str(dict_basis_of_learning[input('Основа обучения: ')])
+order_of_admission = str(dict_order_of_admission[input('Включенные в приказ о зачислении: ')])
 
 
 def get_html():
