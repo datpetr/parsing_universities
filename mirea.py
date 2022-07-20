@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-name_of_direction = 'ИИИ1'
+name_of_direction = '01.03.02 Прикладная математика и информатика (ИИИ)'
 snils = '169-644-902-19'
 URL_main_page = 'https://priem.mirea.ru/accepted-entrants-list/'
 
@@ -192,7 +192,7 @@ def get_content(html, name_of_direction, snils):
             'achievments': pushing(item, 'achievments'),
             'sum': pushing(item, 'sum')
         })
-    print(items_abitur)
+
     for elem in users:
         if snils in elem['fio']:
             for i in elem:
@@ -208,7 +208,7 @@ def parse():  # a function that checks the status of a page
         try:
             get_content(html.text, dict_of_directions[name_of_direction], snils)
         except Exception as ex:
-            print('There is no such person on the list. Check the entered data.')
+            print(ex)
     else:
         print('Error')
 

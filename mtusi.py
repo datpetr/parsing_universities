@@ -17,12 +17,12 @@ dict_translate_for_output = {
     'the_need_for_a_hostel': 'Нуждаемость в общежитии'
 }
 
-# useragent = UserAgent()
-url = 'https://lk.abitur.mtuci.ru/staticPage.php?page_name=spiski&ysclid=l56mnhda9t439607663'
-# snils = '183-443-824 81'
-# type_of_learning = 'Заочное обучение'
-# budget_or_not_budget = 'Бюджетная основа'
-# name_of_direction = 'Информационные системы и технологии'
+# # useragent = UserAgent()
+# url = 'https://lk.abitur.mtuci.ru/staticPage.php?page_name=spiski&ysclid=l56mnhda9t439607663'
+# # snils = '183-443-824 81'
+# # type_of_learning = 'Заочное обучение'
+# # budget_or_not_budget = 'Бюджетная основа'
+# # name_of_direction = 'Информационные системы и технологии'
 snils = input('Введите СНИЛС: ')
 type_of_learning = input('Вид обучения: ')
 budget_or_not_budget = input('Бюджетная основа или платное обучение')

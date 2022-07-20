@@ -159,13 +159,13 @@ def get_content(html, snils):
         a = []
         for elem in item.find_all('td'):
             a.append(elem.get_text(strip=True))
+
         if 'РСОШ' in a[4]:
             applicants.append({
                 'num': a[0],
                 'priority': a[1],
                 'snils': a[2],
-                'individual_achievements': a[4].replace('                                                            ',
-                                                        ' '),
+                'individual_achievements': 'Олимпиада РСОШ - Победитель',
                 'education_document': (a[5] if a[5] != '' else 'Копия отсутствует'),
             })
         else:
@@ -176,14 +176,6 @@ def get_content(html, snils):
                 'sum_of_points_with_id': a[8],
                 'education_document': (a[11] if a[11] != '' else 'Копия отсутствует'),
             })
-    # for item in items_applicants:
-    #     applicants.append({
-    #         'num': pushing(item, '№'),
-    #         'priority': pushing(item, 'Приоритет заявления'),
-    #         'snils': pushing(item, 'text-center'),
-    #         'sum_of_points_with_id': pushing(item, 'sum'),
-    #         'education_document': pushing(item, 'education'),
-    #     })
 
     for elem in applicants:
         if snils == elem['snils']:
@@ -197,25 +189,6 @@ def get_content(html, snils):
 def parse():
     try:
         browser.get(url)
-        # find_element(By.CLASS_NAME, 'btn btn-block btn-primary').click()
-        # if admission_condition == 1:  # условия поступления
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="1"]')[0].click()
-        # elif admission_condition == 2:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="2"]')[0].click()
-        # elif admission_condition == 3:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="3"]')[0].click()
-        # elif admission_condition == 4:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="4"]')[0].click()
-        # elif admission_condition == 5:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="5"]')[0].click()
-        # else:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value=f'//option[@value="{str(admission_condition)}"]')[0].click()
         if admission_condition != 'Без критериев':
             browser.find_elements(by=By.XPATH,
                                   value=f'//option[@value="{admission_condition}"]')[0].click()
@@ -226,33 +199,9 @@ def parse():
         elif direction in '6729':
             browser.find_elements(by=By.XPATH,
                                   value=f'//option[@value="{direction}"]')[0].click()
-        # if direction == 1:  # направления
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="1"]')[1].click()
-        # elif direction == 2:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="2"]')[1].click()
-        # elif direction == 4:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="4"]')[1].click()
-        # elif direction == 5:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="5"]')[1].click()
-        # else:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value=f'//option[@value="{str(direction)}"]')[1].click()
 
         browser.find_element(by=By.XPATH,  # конкурсная группа
                              value=f'//option[@value="{competitive_group}"]').click()
-        # browser.find_element(by=By.XPATH,
-        #                      value='//input[@id="competition_list_agreement"]').click()
-
-        # if basis_of_learning == 1:  # основа обучения
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="1"]')[2].click()
-        # elif basis_of_learning == 2:
-        #     browser.find_elements(by=By.XPATH,
-        #                           value='//option[@value="2"]')[2].click()
 
         browser.find_elements(by=By.XPATH,  # основа обучения
                               value=f'//option[@value="{basis_of_learning}"]')[2].click()
@@ -263,7 +212,7 @@ def parse():
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
-        time.sleep(1)
+        time.sleep(5)
         get_content(get_html(), snils)
 
     except Exception as ex:
