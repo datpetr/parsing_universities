@@ -4,9 +4,8 @@ from selenium.webdriver.firefox.service import Service
 from bs4 import BeautifulSoup
 import time
 
-
-
 dict_admission_condition = {
+    'Без критериев': 0,
     'Общий конкурс': 1,
     'Бюджет. Без вступительных испытаний': 2,
     'Целевая квота': 3,
@@ -34,7 +33,55 @@ dict_competitive_group = {
     'Computer science': 427,
     "В рамках квоты правительства РФ (направление ПМИ)": 458,
     "ФПМИ Прикладная математика и информатика (Предприятия Минпромторга)": 699,
-    'ФПМИ Прикладная математика и информатика (ПАО "ГАЗПРОМ НЕФТЬ")': 700
+    'ФПМИ Прикладная математика и информатика (ПАО "ГАЗПРОМ НЕФТЬ")': 700,
+    'ФРКТ Радиотехника и компьютерные технологии': 428,
+    'ФРКТ Радиотехника и компьютерные технологии Иностранные граждане': 429,
+    'ЛФИ Общая и прикладная физика': 430,
+    'ЛФИ Общая и прикладная физика Иностранные граждане': 431,
+    'ФАКТ Авиационные технологии': 434,
+    'ФАКТ Геокосмические науки и технологии': 435,
+    'ФАКТ Аэрокосмические технологии Иностранные граждане': 436,
+    'ФЭФМ Физика перспективных технологий': 437,
+    'ФЭФМ Физика перспективных технологий Иностранные граждане': 438,
+    'ФПМИ Прикладная математика и компьютерные технологии (ПМФ)': 440,
+    'ФПМИ Прикладная математика и компьютерные технологии Иностранные граждане': 441,
+    'ФБМФ Биофизика и биоинформатика': 443,
+    'ФБМФ Биофизика и биоинформатика Иностранные граждане': 444,
+    'ИНБИКСТ Конвергентные НБИК-технологии и мегасайенс': 445,
+    'В рамках квоты правительства РФ (направление ПМФ)': 459,
+    'ФБВТ Управление инновациями в бизнесе (ПМФ)': 686,
+    'ФРКТ Радиотехника и компьютерные технологии (Предприятия Минпромторга)': 701,
+    'ФАКТ Авиационные технологии (Предприятия Минпромторга)': 702,
+    'ФАКТ Геокосмические науки и технологии (Предприятия Минпромторга)': 703,
+    'ФАКТ Геокосмические науки и технологии (Предприятия Роскосмоса)': 704,
+    'ФЭФМ Физика перспективных технологий (Предприятия Минпромторга)': 705,
+    'ФПМИ Прикладная математика и компьютерные технологии (ПМФ) (Предприятия Минпромторга)': 706,
+    'ФБМФ Биофизика и биоинформатика (ГК Ростех)': 707,
+    'ФАКТ Компьютерное моделирование': 446,
+    'ФАКТ Компьютерное моделирование Иностранные граждане': 447,
+    'ФПМИ Системное программирование и прикладная математика': 448,
+    'ФПМИ Системное программирование и прикладная математика Иностранные граждане': 449,
+    'В рамках квоты правительства РФ (направление ИВТ)': 460,
+    'ФПМИ Прикладная математика и компьютерные технологии (ИВТ)': 610,
+    'ВШПИ Программная инженерия (грантовые места, аналогичные бюджетным)': 687,
+    'ФАКТ Компьютерное моделирование (Предприятия Роскосмоса)': 708,
+    'ФАКТ Компьютерное моделирование (Предприятия Минпромторга)': 709,
+    'ФПМИ Прикладная математика и компьютерные технологии (ИВТ) (АО «АТОМТЕХЭНЕРГО»)': 710,
+    'ФЭФМ Электроника и наноэлектроника': 618,
+    'В рамках квоты Правительства РФ (направление ЭНЭ)': 631,
+    'ФАКТ Техническая физика': 450,
+    'В рамках квоты правительства РФ (направление ТФ)': 461,
+    'ФБМФ Биотехнология': 453,
+    'ФБМФ Биотехнология Иностранные граждане': 454,
+    'Biomedical engineering for foreign citizens': 455,
+    'В рамках квоты правительства РФ (направление БТ)': 462,
+    'ФБВТ Управление инновациями в бизнесе (БТ)': 689,
+    'ФАКТ Системный анализ и управление': 456,
+    'В рамках квоты правительства РФ (направление САУ)': 463,
+    'ФБВТ Управление инновациями в бизнесе (САУ)': 688,
+    'ФАКТ Системный анализ и управление (Предприятия Минпромторга)': 711,
+    'Компьютерная безопасность': 457,
+    'ФРКТ Компьютерная безопасность (Предприятия Минпромторга)': 712,
 }
 
 dict_basis_of_learning = {
@@ -56,6 +103,7 @@ dict_translate_for_output = {
     'education_document': 'Документ об оброзовании'
 }
 
+
 def main(snils, admission_condition, direction, competitive_group, basis_of_learning):
     global browser, url
     url = 'https://pk.mipt.ru/bachelor/competition-list/'
@@ -72,6 +120,7 @@ def main(snils, admission_condition, direction, competitive_group, basis_of_lear
     # order_of_admission = dict_order_of_admission["включая"]
     return parse(snils, admission_condition, direction, competitive_group, basis_of_learning)
 
+
 def get_html():
     global browser
     return BeautifulSoup(browser.page_source, 'lxml')
@@ -80,20 +129,26 @@ def get_html():
 def get_content(html, snils):
     applicants = []
     items_applicants = html.find('tbody', 'entrant-list-body').find_all('tr')
-
     for item in items_applicants:
         a = []
         for elem in item.find_all('td'):
             a.append(elem.get_text(strip=True))
-
-        applicants.append({
-            'num': a[0],
-            'priority': a[1],
-            'snils': a[2],
-            'sum_of_points_with_id': a[8],
-            'education_document': a[11],
-        })
-
+        if a[4].isdigit():
+            applicants.append({
+                'num': a[0],
+                'priority': a[1],
+                'snils': a[2],
+                'sum_of_points_with_id': a[8],
+                'education_document': a[-1],
+            })
+        else:
+            applicants.append({
+                'num': a[0],
+                'priority': a[1],
+                'snils': a[2],
+                'sum_of_points_with_id': a[4],
+                'education_document': a[-1],
+            })
     for elem in applicants:
         if snils == elem['snils']:
             return elem
@@ -105,41 +160,16 @@ def parse(snils, admission_condition, direction, competitive_group, basis_of_lea
     global browser, url
     try:
         browser.get(url)
-        # find_element(By.CLASS_NAME, 'btn btn-block btn-primary').click()
-        if admission_condition == 1:  # условия поступления
+        if admission_condition != 0:
             browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="1"]')[0].click()
-        elif admission_condition == 2:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="2"]')[0].click()
-        elif admission_condition == 3:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="3"]')[0].click()
-        elif admission_condition == 4:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="4"]')[0].click()
-        elif admission_condition == 5:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="5"]')[0].click()
-        else:
-            browser.find_elements(by=By.XPATH,
-                                  value=f'//option[@value="{str(admission_condition)}"]')[0].click()
+                                  value=f'//option[@value="{admission_condition}"]')[0].click()
 
-        if direction == 1:  # направления
+        if direction <= 5:
             browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="1"]')[1].click()
-        elif direction == 2:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="2"]')[1].click()
-        elif direction == 4:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="4"]')[1].click()
-        elif direction == 5:
-            browser.find_elements(by=By.XPATH,
-                                  value='//option[@value="5"]')[1].click()
+                                  value=f'//option[@value="{direction}"]')[1].click()
         else:
             browser.find_elements(by=By.XPATH,
-                                  value=f'//option[@value="{str(direction)}"]')[1].click()
+                                  value=f'//option[@value="{direction}"]')[0].click()
 
         browser.find_element(by=By.XPATH,
                              value=f'//option[@value="{competitive_group}"]').click()  # конкурсная группа
@@ -158,11 +188,16 @@ def parse(snils, admission_condition, direction, competitive_group, basis_of_lea
 
         browser.find_element(by=By.XPATH,
                              value='//div[@class="btn btn-block btn-primary"]').click()  # кнопка "поступить"
+        browser.find_element(by=By.XPATH,
+                             value=".//*[contains(text(), 'Отобразить все заявления')]").click()
         time.sleep(1)
         return get_content(get_html(), snils)
 
-    except Exception as ex:
-        print(ex)
+    # except Exception as ex:
+    #     print(ex)
     finally:
         browser.close()
         browser.quit()
+
+
+# print(main('185-208-972 94', 'Без критериев', '10.05.01 Компьютерная безопасность', 'Компьютерная безопасность', 'Бюджетное обучение'))

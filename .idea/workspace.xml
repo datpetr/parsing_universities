@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d5e2acd3-bee4-4c33-82db-28cfc82021a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mtusi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/TBot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mipt.py" beforeDir="false" afterPath="$PROJECT_DIR$/mipt.py" afterDir="false" />
@@ -43,14 +44,16 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sasha/PycharmProjects/parsing_universities&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Sasha/PycharmProjects/parsing_universities/1&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sasha\PycharmProjects\parsing_universities\1" />
       <recent name="C:\Users\Sasha\PycharmProjects\parsing_universities" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Sasha\PycharmProjects\parsing_universities\1" />
       <recent name="C:\Users\Sasha\PycharmProjects\parsing_universities" />
     </key>
   </component>
@@ -139,7 +142,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="mpti" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="mtusi" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="parsing_universities" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -151,7 +154,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mpti.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mtusi.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="project_light" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="parsing_universities" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/1/EXE2PY_Main" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/1/EXE2PY_Main/project_light.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,8 +188,9 @@
       <list>
         <item itemvalue="Python.TBot" />
         <item itemvalue="Python.mipt" />
+        <item itemvalue="Python.mtusi" />
         <item itemvalue="Python.mirea" />
-        <item itemvalue="Python.mpti" />
+        <item itemvalue="Python.project_light" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657352075224</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="mipt done">
+      <created>1657360974462</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1657360974462</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -267,6 +299,7 @@
     <MESSAGE value="tg bot" />
     <MESSAGE value="not all done yet" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="mipt done" />
+    <option name="LAST_COMMIT_MESSAGE" value="mipt done" />
   </component>
 </project>
